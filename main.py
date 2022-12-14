@@ -3,57 +3,46 @@ from random import randint
 
 def attack(char_name, char_class):
     if char_class == 'warrior':
-        return (f'{char_name} нанёс урон противнику равный'
+        return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(3, 5)}')
     if char_class == 'mage':
-        return (f'{char_name} нанёс урон противнику равный'
+        return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(5, 10)}')
     if char_class == 'healer':
-        return (f'{char_name} нанёс урон противнику равный'
+        return (f'{char_name} нанёс противнику урон, равный '
                 f'{5 + randint(-3, -1)}')
 
 
 def defence(char_name, char_class):
     if char_class == 'warrior':
-        return (f'{char_name} блокировал'
-        f'{10 + randint(5, 10)}урона')
+        return (f'{char_name} блокировал {10 + randint(5, 10)} ед. урона')
     if char_class == 'mage':
-        return (f'{char_name} блокировал'
-        f'{10 + randint(-2, 2)}урона')
+        return (f'{char_name} блокировал {10 + randint(-2, 2)} ед. урона')
     if char_class == 'healer':
-        return (f'{char_name} блокировал'
-        f'{10 + randint(2, 5)}урона')
+        return (f'{char_name} блокировал {10 + randint(2, 5)} ед. урона')
 
 
 def special(char_name, char_class):
     if char_class == 'warrior':
-        return (f'{char_name} применил специальное умение'
+        return (f'{char_name} применил специальное умение '
                 f'«Выносливость {80 + 25}»')
     if char_class == 'mage':
-        return (f'{char_name} применил специальное умение'
-                f'«Атака {5 + 40}»')
+        return (f'{char_name} применил специальное умение «Атака {5 + 40}»')
     if char_class == 'healer':
-        return (f'{char_name} применил специальное умение'
-                f'«Защита {10 + 30}»')
+        return (f'{char_name} применил специальное умение «Защита {10 + 30}»')
 
 
 def start_training(char_name, char_class):
     if char_class == 'warrior':
-        print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
+        print(f'{char_name}, ты Воитель — великий мастер ближнего боя.')
     if char_class == 'mage':
         print(f'{char_name}, ты Маг — превосходный укротитель стихий.')
     if char_class == 'healer':
         print(f'{char_name}, ты Лекарь — чародей, способный исцелять раны.')
-    attack_desc = 'attack — чтобы атаковать противника'
-    defence_desc = 'defence — чтобы блокировать атаку противника'
-    special_desc = 'special — чтобы использовать свою суперсилу'
-    comm_choice = 'Введи одну из команд:'
     print('Потренируйся управлять своими навыками.')
-    print(f'Введи одну из команд:'
-          f'attack — чтобы атаковать противника,'
-          f'defence — чтобы блокировать атаку противника'
-          f'или special — чтобы использовать свою суперсилу'
-          )
+    print('Введи одну из команд: attack — чтобы атаковать противника, '
+          'defence — чтобы блокировать атаку противника или '
+          'special — чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
     cmd = None
     while cmd != 'skip':
@@ -70,26 +59,22 @@ def start_training(char_name, char_class):
 def choice_char_class():
     approve_choice = None
     char_class = None
-    war = 'Воитель — warrior'
-    mag = 'Маг — mage'
-    heal = 'Лекарь — healer'
-    name_chice = 'Введи название персонажа, за которого хочешь играть: '
-    approvement_text = 'Нажми (Y), чтобы подтвердить выбор,'
-    change_text = 'или любую другую кнопку, чтобы выбрать другого персонажа'
     while approve_choice != 'y':
-        char_class = input(f'Введи название персонажа,'
-                           f'за которого хочешь играть: Воитель — warrior,'
-                           f'Маг — mage, Лекарь — healer:')
+        char_class = input('Введи название персонажа, '
+                           'за которого хочешь играть: Воитель — warrior, '
+                           'Маг — mage, Лекарь — healer: ')
         if char_class == 'warrior':
-            print(f'Воитель — дерзкий воин ближнего боя.'
-                  f'Сильный, выносливый и отважный.')
+            print('Воитель — дерзкий воин ближнего боя. '
+                  'Сильный, выносливый и отважный.')
         if char_class == 'mage':
-            print(f'Маг — находчивый воин дальнего боя.'
-                  f'Обладает высоким интеллектом.')
+            print('Маг — находчивый воин дальнего боя. '
+                  'Обладает высоким интеллектом.')
         if char_class == 'healer':
-            print(f'Лекарь — могущественный заклинатель.'
-                  f'Черпает силы из природы, веры и духов.')
-        approve_choice = input(approvement_text + change_text)
+            print('Лекарь — могущественный заклинатель. '
+                  'Черпает силы из природы, веры и духов.')
+        approve_choice = input('Нажми (Y), чтобы подтвердить выбор, '
+                               'или любую другую кнопку, '
+                               'чтобы выбрать другого персонажа ').lower()
     return char_class
 
 
@@ -103,6 +88,3 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class = choice_char_class()
     print(start_training(char_name, char_class))
-
-
-main()
